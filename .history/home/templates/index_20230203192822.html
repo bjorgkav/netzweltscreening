@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        ul, #myUL {
+            list-style-type: none;
+        }
+        #myUL {
+            margin: 0;
+            padding: 0;
+        }
+        .caret {
+            cursor: pointer;
+            -webkit-user-select: none; /* Safari 3.1+ */
+            -moz-user-select: none; /* Firefox 2+ */
+            -ms-user-select: none; /* IE 10+ */
+            user-select: none;
+        }
+        .caret::before {
+            content: "\25B6";
+            color: black;
+            display: inline-block;
+            margin-right: 6px;
+        }
+        .caret-down::before {
+            -ms-transform: rotate(90deg); /* IE 9 */
+            -webkit-transform: rotate(90deg); /* Safari */'
+            transform: rotate(90deg); 
+        }
+        .nested {
+            display: none;
+        }
+        .active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <h2>Territories</h2>
+    <p>Here are the list of territories</p>
+
+    <ul id="myUL">
+        {% for territory, children in t_dict.items %}
+            <li>
+                <span class="caret">{{territory}}</span>
+                <ul class="nested"></ul>
+                {% for child in children %}                    
+                    <li>{{child}}</li>
+                {% endfor %}
+                </ul>
+            </li>
+        {% endfor %}
+    </ul>
+    
+</body>
+</html>

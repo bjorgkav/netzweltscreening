@@ -1,0 +1,11 @@
+<li> 
+    <span class="caret">{{n.getName}}</span>
+    {% if n.getChildCount > 0 %}
+        <ul class="nested">
+            {% for item in n.getChildren %}
+                <li>{% include "tree_view_template.html" %}</li>
+            {%endfor%}
+        </ul>
+    {% endif %}
+
+</li>

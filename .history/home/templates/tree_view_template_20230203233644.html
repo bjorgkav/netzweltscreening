@@ -1,0 +1,20 @@
+<li> 
+    <span class="caret">{{terr}}</span>
+    {% if t_dict|get_item:terr %} <!--works similar to mydict[item.NAME]; returns the value-->
+        <ul class="nested">
+            {% for sub in t_dict|get_item:terr %}
+                {% include  %}
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    {%if node.has_childs %}
+        <ul>
+         {%for ch in node.all_childs %}
+              {%with node=ch template_name="tree_view_template.html" %}
+                   {%include template_name%}
+              {%endwith%}
+         {%endfor%}
+         </ul>
+    {%endif%}
+</li>

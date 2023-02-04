@@ -1,0 +1,11 @@
+<li> <span class="caret">{{node.getName}}</span>
+    {%if node.getChildCount > 0 %}
+        <ul>
+        {%for item in node.getChildren %}
+            {%with node=item template_name="tree_view_template.html" %}
+                {%include template_name%}
+            {%endwith%}
+        {%endfor%}
+        </ul>
+    {%endif%}
+</li>
